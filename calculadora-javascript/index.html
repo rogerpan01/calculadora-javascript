@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Caululadora</title>
+	<link rel="stylesheet" type="text/css" href="css.css">
+	<meta charset="UTF-8"/>
+</head>
+<body>
+ <h1> Calculadora</h1>
+ 	
+		<div class="caixa-numero"><label>Número 1:</label>
+			<input id="n1" type="text" name="n1"><br/>
+		</div>
+		<div class="caixa-numero">	
+			<label>Número 2:</label>
+			<input id="n2" type="text" name="n2">
+		</div> 
+		<div class="caixa-numero resultado">
+			Resultado: <span id="resultado"> </span>
+		</div>
+		<div>
+			<button class="botao" id="somar">Somar</button>
+			<button class="botao" id="subtrair">Subtrair</button>
+			<button class="botao" id="multiplicar">Multiplicar</button>
+			<button class="botao" id="dividir">Dividir</button>
+			<button class="botao" id="limpar">C</button>
+		</div>
+	
+ 
+</body>
+<script type="text/javascript">
+	var n1 = document.querySelector('#n1')
+	var n2 = document.querySelector('#n2')
+	var tag_resultado = document.querySelector('#resultado')
+	document.querySelectorAll('input').forEach(function(input_html){
+		input_html.addEventListener('mousemove', function(evento){
+			var entrada_usuario = parseInt(evento.target.value)
+			if (isNaN(entrada_usuario) || !isFinite(entrada_usuario)) {
+				evento.target.style.background= 'aqua'
+			}
+		})
+		input_html.addEventListener('mouseleave', function(evento){
+			var entrada_usuario = parseInt(evento.target.value)
+			if (isNaN(entrada_usuario) || !isFinite(entrada_usuario)) {
+				evento.target.style.background = '#eee'
+			}
+		})
+	})
+	document.querySelector('#somar').addEventListener('click',function(){
+		var resultado = parseInt(n1.value) + parseInt(n2.value)
+				if (isNaN(resultado) || !isFinite(resultado)){
+				alert("os campos só aceitam Valores numéricos! \n Tente Outro Valor")
+				return 
+				}
+					tag_resultado.textContent = resultado
+	})
+	document.querySelector('#subtrair').addEventListener('click', function(){
+		var resultado = parseInt(n1.value) - parseInt(n2.value)
+				if (isNaN(resultado) || !isFinite(resultado)){
+					alert("os campos só aceitam Valores numéricos! \n Tente Outro Valor")
+				return 
+				}
+					tag_resultado.textContent = resultado
+	})
+	document.querySelector('#multiplicar').addEventListener('click', function(){
+		var resultado = parseInt(n1.value) * parseInt(n2.value)
+				if (isNaN(resultado) || !isFinite(resultado)){
+					alert("os campos só aceitam Valores numéricos! \n Tente Outro Valor")
+				return 
+				}
+					tag_resultado.textContent = resultado
+	})
+	document.querySelector('#dividir').addEventListener('click', function(){
+
+				var resultado = parseInt(n1.value) / parseInt(n2.value)
+				if (isNaN(resultado) || !isFinite(resultado)){
+					alert("os campos só aceitam Valores numéricos! \n Tente Outro Valor")
+				return 
+				}
+					tag_resultado.textContent = resultado
+	})
+	document.querySelector('#limpar').addEventListener('click',function(){
+		n1.value=''
+		n2.value=''
+		tag_resultado.textContent=''
+	})
+</script>
+</html>
